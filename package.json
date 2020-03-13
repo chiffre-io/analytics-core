@@ -1,7 +1,7 @@
 {
-  "name": "@chiffre/template-library",
+  "name": "@chiffre/analytics-core",
   "version": "0.0.0-semantically-released",
-  "description": "Template for Chiffre libraries",
+  "description": "Types & definitions for Chiffre Analytics",
   "main": "dist/index.js",
   "license": "MIT",
   "author": {
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chiffre-io/template-library"
+    "url": "https://github.com/chiffre-io/analytics-core"
   },
   "keywords": [
     "chiffre",
-    "template"
+    "analytics"
   ],
   "publishConfig": {
     "access": "public"
@@ -28,14 +28,15 @@
     "build": "run-s build:clean build:ts",
     "ci": "run-s build test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nanoid": "^2.1.11"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
-    "@types/faker": "^4.1.10",
     "@types/jest": "^25.1.4",
+    "@types/nanoid": "^2.1.0",
     "@types/node": "^13.9.1",
     "commitlint": "^8.3.5",
-    "faker": "^4.1.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "npm-run-all": "^4.1.5",
@@ -46,7 +47,7 @@
   "jest": {
     "verbose": true,
     "preset": "ts-jest/presets/js-with-ts",
-    "testEnvironment": "node"
+    "testEnvironment": "jsdom"
   },
   "husky": {
     "hooks": {
