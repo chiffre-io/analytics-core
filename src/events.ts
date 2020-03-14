@@ -4,7 +4,7 @@ import { PageVisitData } from './navigation'
 export interface Event<T, K extends keyof T> {
   type: K
   time: number
-  data?: T[K]
+  data: T[K]
 }
 
 // ---
@@ -21,7 +21,9 @@ export type GenericEvents = {
   'generic:string': GenericDataPoint<string>
   'generic:strings': GenericDataPoint<string>[]
 }
-export type GenericEvent = Event<GenericEvents, keyof GenericEvents>
+export type GenericEvent<
+  K extends keyof GenericEvents = keyof GenericEvents
+> = Event<GenericEvents, K>
 
 export function isGenericEvent(event: AllEvents): event is GenericEvent {
   return (
@@ -33,22 +35,22 @@ export function isGenericEvent(event: AllEvents): event is GenericEvent {
 }
 export function isGenericNumberEvent(
   event: AllEvents
-): event is Event<GenericEvents, 'generic:number'> {
+): event is GenericEvent<'generic:number'> {
   return event.type === 'generic:number'
 }
 export function isGenericNumbersEvent(
   event: AllEvents
-): event is Event<GenericEvents, 'generic:numbers'> {
+): event is GenericEvent<'generic:numbers'> {
   return event.type === 'generic:numbers'
 }
 export function isGenericStringEvent(
   event: AllEvents
-): event is Event<GenericEvents, 'generic:string'> {
+): event is GenericEvent<'generic:string'> {
   return event.type === 'generic:string'
 }
 export function isGenericStringsEvent(
   event: AllEvents
-): event is Event<GenericEvents, 'generic:strings'> {
+): event is GenericEvent<'generic:strings'> {
   return event.type === 'generic:strings'
 }
 
@@ -63,13 +65,15 @@ export type BrowserDataPoint<T = {}> = BrowserEventData & T
 
 export type BrowserEvents = {
   'session:start': BrowserDataPoint<SessionData>
-  'session:dnt': never
+  'session:dnt': null
   'session:end': BrowserDataPoint
   'page:visit': BrowserDataPoint<PageVisitData>
   'page:hide': BrowserDataPoint
   'page:show': BrowserDataPoint
 }
-export type BrowserEvent = Event<BrowserEvents, keyof BrowserEvents>
+export type BrowserEvent<
+  K extends keyof BrowserEvents = keyof BrowserEvents
+> = Event<BrowserEvents, K>
 
 export function isBrowserEvent(event: AllEvents): event is BrowserEvent {
   return (
@@ -82,39 +86,41 @@ export function isBrowserEvent(event: AllEvents): event is BrowserEvent {
 }
 export function isSessionStartEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'session:start'> {
+): event is BrowserEvent<'session:start'> {
   return event.type === 'session:start'
 }
 export function isSessionDNTEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'session:dnt'> {
+): event is BrowserEvent<'session:dnt'> {
   return event.type === 'session:dnt'
 }
 export function isSessionEndEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'session:end'> {
+): event is BrowserEvent<'session:end'> {
   return event.type === 'session:end'
 }
 export function isPageVisitEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'page:visit'> {
+): event is BrowserEvent<'page:visit'> {
   return event.type === 'page:visit'
 }
 export function isPageHideEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'page:hide'> {
+): event is BrowserEvent<'page:hide'> {
   return event.type === 'page:hide'
 }
 export function isPageShowEvent(
   event: AllEvents
-): event is Event<BrowserEvents, 'page:show'> {
+): event is BrowserEvent<'page:show'> {
   return event.type === 'page:show'
 }
+
+// --
 
 function eventFactory<Events>() {
   return function createEvent<K extends keyof Events>(
     type: K,
-    data?: Events[K]
+    data: Events[K]
   ): Event<Events, K> {
     return {
       type,
