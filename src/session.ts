@@ -1,4 +1,4 @@
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 import { createBrowserEvent, EventSender } from './events'
 
 export const sessionID = nanoid()
