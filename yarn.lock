@@ -2994,9 +2994,9 @@ ms@^2.1.1:
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
 nanoid@^3.0.2:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.0.tgz#4b818e31ff206b43d2edb712bccd3dfe48ac29cf"
-  integrity sha512-efPYPGl9T/jOLv92u9SKvjFHSeYSy+8HyxC2cPNEcjDeZV88WnaczMJtz56ozbgfSon8OjiQLGnjze6bb2VQsA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.1.tgz#ada9aa4ce25b3c09b1dc7c76477deab4c59cc7a1"
+  integrity sha512-PXqXpihaVr1vX4ygFXup7Upe89ZL1gaFXYwdbgfif+2N6kFDePNvd51Zj5NlkkJP90fkTVlpYgBhpJ9tFfzHdw==
 
 nanomatch@^1.2.9:
   version "1.2.13"
