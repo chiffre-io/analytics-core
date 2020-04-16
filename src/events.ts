@@ -133,6 +133,9 @@ function eventFactory<Events>() {
 export const createGenericEvent = eventFactory<GenericEvents>()
 export const createBrowserEvent = eventFactory<BrowserEvents>()
 
-export type EventSender = <T>(event: Event<T, keyof T>) => void
+export type EventSender = <T>(
+  event: Event<T, keyof T>,
+  lowPriority?: boolean
+) => void
 
 export type AllEvents = GenericEvent | BrowserEvent

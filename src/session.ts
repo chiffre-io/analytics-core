@@ -63,7 +63,7 @@ export const pageShow = () => {
 export const setupSessionListeners = (send: EventSender) => {
   const startEvent = sessionStart()
   window.addEventListener('beforeunload', () => {
-    send(sessionEnd())
+    send(sessionEnd(), true)
   })
   window.addEventListener('visibilitychange', () => {
     send(document.hidden ? pageHide() : pageShow())
