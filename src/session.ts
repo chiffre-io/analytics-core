@@ -46,27 +46,10 @@ export const sessionEnd = () => {
   })
 }
 
-export const pageHide = () => {
-  return createBrowserEvent('page:hide', {
-    sid: sessionID,
-    path: window.location.pathname
-  })
-}
-
-export const pageShow = () => {
-  return createBrowserEvent('page:show', {
-    sid: sessionID,
-    path: window.location.pathname
-  })
-}
-
 export const setupSessionListeners = (send: EventSender) => {
   const startEvent = sessionStart()
   window.addEventListener('beforeunload', () => {
     send(sessionEnd(), true)
-  })
-  window.addEventListener('visibilitychange', () => {
-    send(document.hidden ? pageHide() : pageShow())
   })
   send(startEvent)
 }

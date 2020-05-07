@@ -69,8 +69,6 @@ export type BrowserEvents = {
   'session:noscript': null
   'session:end': BrowserDataPoint
   'page:visit': BrowserDataPoint<PageVisitData>
-  'page:hide': BrowserDataPoint
-  'page:show': BrowserDataPoint
 }
 export type BrowserEvent<
   K extends keyof BrowserEvents = keyof BrowserEvents
@@ -80,9 +78,7 @@ export function isBrowserEvent(event: AllEvents): event is BrowserEvent {
   return (
     isSessionStartEvent(event) ||
     isSessionEndEvent(event) ||
-    isPageVisitEvent(event) ||
-    isPageHideEvent(event) ||
-    isPageShowEvent(event)
+    isPageVisitEvent(event)
   )
 }
 export function isSessionStartEvent(
@@ -109,16 +105,6 @@ export function isPageVisitEvent(
   event: AllEvents
 ): event is BrowserEvent<'page:visit'> {
   return event.type === 'page:visit'
-}
-export function isPageHideEvent(
-  event: AllEvents
-): event is BrowserEvent<'page:hide'> {
-  return event.type === 'page:hide'
-}
-export function isPageShowEvent(
-  event: AllEvents
-): event is BrowserEvent<'page:show'> {
-  return event.type === 'page:show'
 }
 
 // --
