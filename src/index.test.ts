@@ -2,9 +2,7 @@ import { sessionStart, sessionEnd } from './session'
 import {
   isBrowserEvent,
   isSessionStartEvent,
-  isSessionEndEvent,
-  isPageHideEvent,
-  isPageShowEvent
+  isSessionEndEvent
 } from './events'
 
 test('sessionStart', () => {
