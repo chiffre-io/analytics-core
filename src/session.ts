@@ -18,10 +18,17 @@ export interface SessionData {
 }
 
 export const sessionStart = () => {
+  let ref = document.referrer
+  if (!ref) {
+    try {
+      const query = new URLSearchParams(window.location.search)
+      ref = query.get('utm_source') ?? ''
+    } catch {}
+  }
   const event = createBrowserEvent('session:start', {
     ua: navigator.userAgent,
     os: navigator.platform,
-    ref: document.referrer,
+    ref,
     lang: navigator.language,
     tzo: new Date().getTimezoneOffset(),
     vp: {
