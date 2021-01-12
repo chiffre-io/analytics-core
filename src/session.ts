@@ -35,7 +35,7 @@ export const sessionStart = () => {
       w: window.innerWidth,
       h: window.innerHeight
     },
-    lvd: window.localStorage.getItem('chiffre:last-visit-date') || undefined,
+    lvd: window.localStorage?.getItem('chiffre:last-visit-date') || undefined,
     sid: sessionID,
     path: window.location.pathname
   })
