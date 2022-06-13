@@ -29,7 +29,7 @@
     "ci": "run-s build test"
   },
   "dependencies": {
-    "nanoid": "^3.1.15"
+    "nanoid": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
